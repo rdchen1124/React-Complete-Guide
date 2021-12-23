@@ -20,6 +20,7 @@ const ExpenseForm = ({onAddExpenses}) => {
       return
     }
     const expenseData = {
+      id : Math.floor(Math.random()*1000000)+1,
       title,
       amount,
       date: new Date(date)
