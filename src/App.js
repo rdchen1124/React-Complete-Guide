@@ -30,7 +30,7 @@ const EXPENSES_DATA =  [
 const App = () => {
   const [expenses, setExpenses] = useState(EXPENSES_DATA) 
   const addExpenses = (expenseData) => {
-    setExpenses(prevExpenses => [...prevExpenses, expenseData])
+    setExpenses(prevExpenses => [expenseData, ...prevExpenses])
   }
   return (
     <div>
