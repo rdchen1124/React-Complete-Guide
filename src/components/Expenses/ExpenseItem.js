@@ -10,14 +10,16 @@ const ExpenseItem = ({title, amount, date}) => {
     console.log(name);
   }
   return (
-    <Card className='expense-item'>
-      <ExpenseDate date={date} />
-      <div className='expense-item__description'>
-        <h2>{name}</h2>
-        <div className='expense-item__price'>$ {amount}</div>
-        <button onClick={handleClick}>Click</button>
-      </div>
-    </Card>
+    <li>
+      <Card className='expense-item'>
+        <ExpenseDate date={date} />
+        <div className='expense-item__description'>
+          <h2>{name}</h2>
+          <div className='expense-item__price'>$ {amount}</div>
+          <button onClick={handleClick}>Click</button>
+        </div>
+      </Card>
+    </li>
   )
 }
 export default ExpenseItem;
