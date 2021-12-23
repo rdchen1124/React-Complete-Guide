@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './ExpenseForm.css';
 
-const ExpenseForm = ({onAddExpenses}) => {
+const ExpenseForm = ({onAddExpenses, onHideForm}) => {
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
@@ -30,7 +30,10 @@ const ExpenseForm = ({onAddExpenses}) => {
     setAmount('');
     setDate('');
   }
-
+  const handleCancelClick = (e) => {
+    e.preventDefault();
+    onHideForm();
+  }
   return (
     <form onSubmit={handleSubmitExpense}>
       <div className="new-expense__controls">
@@ -64,6 +67,7 @@ const ExpenseForm = ({onAddExpenses}) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button onClick={handleCancelClick}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
