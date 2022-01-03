@@ -7,6 +7,7 @@ import styles from "./UserForm.module.css";
 const UserForm = ({onAddUser}) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
+  const [error, setError] = useState(null);
   const handleNameChange = event => {
     setName(event.target.value);
   }
@@ -16,19 +17,30 @@ const UserForm = ({onAddUser}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(name.trim(" ").length === 0 || age.trim(" ").length === 0){
+      setError({
+        title: "Invalid Information",
+        message: "Please typing valid value of username or age.(not empty!)"
+      });
       return;
     }
-    if(+age < 1 ){
+    if(+age <= 0 ){
+      setError({
+        title: "Invalid Age",
+        message: "Please typing valid value of age.(must > 0)"
+      });
       return;
     }
-    console.log(name, age);
     onAddUser({name, age});
     setName("");
     setAge("");
   }
+  const handleResetError = e => {
+    e.preventDefault();
+    setError(null);
+  }
   return (
     <div>
-      <ErrorModal title="Error Occurred." message="Something Wrong!" />
+      { error && <ErrorModal onConfirm={handleResetError} {...error} />}
       <Card cName={styles.input}>
         <form onSubmit={handleSubmit}>
           <label htmlFor="username">UserName</label>
