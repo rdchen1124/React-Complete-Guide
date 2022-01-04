@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
 import ErrorModal from "../UI/ErrorModal";
@@ -39,7 +39,7 @@ const UserForm = ({onAddUser}) => {
     setError(null);
   }
   return (
-    <div>
+    <Fragment>
       { error && <ErrorModal onConfirm={handleResetError} {...error} />}
       <Card cName={styles.input}>
         <form onSubmit={handleSubmit}>
@@ -61,7 +61,7 @@ const UserForm = ({onAddUser}) => {
           <Button type="submit">Add User</Button>
         </form>
       </Card>
-    </div>
+    </Fragment>
   )
 }
 
